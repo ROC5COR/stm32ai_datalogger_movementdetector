@@ -12,6 +12,16 @@ In short we will cover the data acquisition, the NN model building and the NN mo
 ### Step 1: Record your dataset
 To build our dataset we will use a new library released by ST called **AILogging** which is basically a C API that will represents our data as *ai_logging_packet_t* understandable on STM32 and computer side. We will use the C version of this API on STM32 and we will use the GenericUI application which uses python version of this API on computer !
 #### Step 1.1: Open the CubeIDE project
+Open the CubeIDE project provided and be sure to have the following define ```#define RECORDING_MODE 1``` at the beginning of your project. This will ensure that the project is built for Recording purpose and not including neural network files. 
+
+The project is basically doing:
+- Init of USART that will be used to communicate
+- Init of LSM6DSL, the accelerometer that we will use to get data
+- Init of AILogging API to communicate with the computer
+- Get accelerometer's data 
+- Build a packet and send it through USART
+
+
 #### Step 1.2: Display your data using GenericUI
 #### Step 1.3: Record and export your dataset
 
